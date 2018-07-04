@@ -417,6 +417,7 @@ public class RNPushNotificationHelper {
         }
     }
 
+    // this function does not work. Use cancelScheduledNotificationById instead.
     public void cancelScheduledNotification(ReadableMap userInfo) {
         for (String id : scheduledNotificationsPersistence.getAll().keySet()) {
             try {
@@ -431,6 +432,10 @@ public class RNPushNotificationHelper {
                 Log.w(LOG_TAG, "Problem dealing with scheduled notification " + id, e);
             }
         }
+    }
+
+    public void cancelScheduledNotificationById(String notificationIDString) {
+        cancelScheduledNotification(notificationIDString);
     }
 
     private void cancelScheduledNotification(String notificationIDString) {
